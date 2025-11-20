@@ -11,7 +11,7 @@ In this app, I used:
 <p align="center">
 	https://github.com/consumet/api.consumet.org
 	<br>
-	You can search for anime and see their details
+	You can search for anime and see their details and many more.
 </p>
 
 
