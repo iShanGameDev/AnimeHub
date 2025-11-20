@@ -2,7 +2,7 @@
 <h1>
 	Hey There!
 </h1>
-This is an anime searcher app<br>
+This is an anime searcher app using (Unity Engine)<br>
 In this app, I used:
 <p align="center">
 	<img src="https://consumet.org/images/consumetlogo.png" width="100px" height="100px" href="https://github.com/consumet/api.consumet.org"/>
