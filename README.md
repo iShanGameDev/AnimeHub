@@ -20,5 +20,10 @@ In this app, I used:
 	Popular Anime List
 	Trending Anime List
 	Random Anime List
-## Api Details
-	a collection of high-level, search engine APIs that provide accurate information about numerous entertainment mediums (such as anime, manga, light novels, movies etc.), along with links to stream these contents from 		publicly-available online sources. This website intends to inform you about how to use both the API (https://api.consumet.org(opens in a new tab)) and the TypeScript library (@consumet/extensions(opens in a new tab)).
+## 🌟API Details
+	A collection of high-level,
+	search engine APIs that provide accurate information about numerous entertainment media
+	(such as anime, manga, light novels, movies etc.)
+	Along with links to stream these contents from 	publicly-available online sources.
+	This website intends to inform you about how to use both the API (https://api.consumet.org).
+	The TypeScript library (@consumet/extensions).
