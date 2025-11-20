@@ -19,7 +19,7 @@ In this app, I used:
 ## ✨Things you can see:
 	Popular Anime List
 	Trending Anime List
-	Random Anime List
+	Top-Airing Anime List
 ## 🌟API Details
 	A collection of high-level,
 	search engine APIs that provide accurate information about numerous entertainment media
