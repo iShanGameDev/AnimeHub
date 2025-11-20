@@ -2,7 +2,7 @@
 <h1>
 	Hey There!
 </h1>
-This is an anime searcher app<br>
+This is an anime searcher app using (Unity Engine)<br>
 In this app, I used:
 <p align="center">
 	<img src="https://consumet.org/images/consumetlogo.png" width="100px" height="100px" href="https://github.com/consumet/api.consumet.org"/>
@@ -11,12 +11,12 @@ In this app, I used:
 <p align="center">
 	https://github.com/consumet/api.consumet.org
 	<br>
-	You can search for anime and see their details
+	You can search for anime and see their details and many more.
 </p>
 
 
 
-## Things you can see:
+## ✨Things you can see:
 	Popular Anime List
 	Trending Anime List
 	Random Anime List
