@@ -16,7 +16,7 @@ In this app, I used:
 
 
 
-## Things you can see:
+## ✨Things you can see:
 	Popular Anime List
 	Trending Anime List
 	Random Anime List
