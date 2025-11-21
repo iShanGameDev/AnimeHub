@@ -31,14 +31,17 @@ public class AnimeInfoViewer : MonoBehaviour
     public Text ReleaseData;
     public Text Season;
     public Text Description;
-    
+    public Dropdown EpisodeDropdown;
     [Header("References")] 
     public Transform GenresHolder;
     public Transform CharecterHolder;
     public Transform RecommendationHolder;
+    public Transform EpisodeContainer;
+    public Transform EpisodesHolder;
     public GameObject GenresItem;
     public CharecterItem CharecterItem;
     public RecommendationItem RecommendationItem;
+    public GameObject EpisodesItem;
 
     public void SearchAnime(string ID)
     {
@@ -64,6 +67,9 @@ public class AnimeInfoViewer : MonoBehaviour
         }
     }
 
+    public int TotalDone = 0;
+    public int Threshold = 50;
+    public List<Transform> EpisodeContainerList = new List<Transform>();
     void SetItemData()
     {
         ClearAllDataInInfo();
@@ -139,8 +145,64 @@ public class AnimeInfoViewer : MonoBehaviour
                 SearchAnime(VARIABLE.id.ToString());
             });
         }
+
         
+        Transform Container = null;
+        for (int i = 0; i < data.episodes.Count; i++)
+        {
+            var item = data.episodes[i];
+            
+
+            if (i == 0)
+            {
+                Dropdown.OptionData O_data = new Dropdown.OptionData();
+                O_data.text = $"{0}-{Threshold}";
+                EpisodeDropdown.options.Add(O_data);
+
+
+                Container = Instantiate(EpisodesHolder, EpisodeContainer);
+                
+                EpisodeContainerList.Add(Container);
+            }
+
+            if (TotalDone >= Threshold)
+            {
+                Threshold += 50;
+                
+                
+                Dropdown.OptionData in_data = new Dropdown.OptionData();
+                in_data.text = $"{TotalDone}-{Threshold}";
+                EpisodeDropdown.options.Add(in_data);
+                
+                Container = Instantiate(EpisodesHolder, EpisodeContainer);
+                
+                EpisodeContainerList.Add(Container);
+            }
+
+            GameObject gb = Instantiate(EpisodesItem, Container.transform);
+            gb.GetComponentInChildren<Text>().text = $"{item.number}";
+            gb.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                WatchEpisodeViewer.Instance.GetEpisodeData(item.id);
+            });
+            
+            TotalDone++;
+        }
         
+        foreach (var VARIABLE in EpisodeContainerList)
+        {
+            VARIABLE.gameObject.SetActive(false);
+        }
+        EpisodeContainerList[0].gameObject.SetActive(true);
+        
+        EpisodeDropdown.onValueChanged.AddListener((e) =>
+        {
+            foreach (var VARIABLE in EpisodeContainerList)
+            {
+                VARIABLE.gameObject.SetActive(false);
+            }
+            EpisodeContainerList[e].gameObject.SetActive(true);
+        });
         Page.SetActive(true);
         LoadingManager.Instance.HideLoadingScreen();
     }
@@ -188,6 +250,17 @@ public class AnimeInfoViewer : MonoBehaviour
             var item =  RecommendationHolder.GetChild(i);
             Destroy(item.gameObject);
         }
+
+        foreach (var VARIABLE in EpisodeContainerList)
+        {
+            Destroy(VARIABLE.gameObject);
+        }
+        EpisodeContainerList.Clear();
+        
+        EpisodeDropdown.ClearOptions();
+        TotalDone = 0;
+        Threshold = 50;
+
     }
     IEnumerator LoadImagesfromURL(string url, System.Action<Texture> callback)
     {
